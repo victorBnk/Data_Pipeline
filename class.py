@@ -82,7 +82,7 @@ class coin:
         date : datetime
             Date to consult coin information
         return: json
-            return json with crypto informations from passed day
+            return json with crypto informations from passed parameters date
         """
         url_consult = self.__url_api + f"day-summary/{date.year}/{date.month}/{date.day}"
         return requests.get(url_consult).json()
@@ -115,6 +115,33 @@ class coin:
 
 
 class connection_bd:
+
+    """
+    Class for create connection with postgresql DB
+
+    Default use:
+    * Create engine connection with DB
+
+    Attributes
+    ----------
+    user : str
+        DB's username to connect
+
+    password : str
+        DB's password to connect
+
+    host : str
+        DB's host to connect
+
+    database_name : str
+        DB's name to connect
+    
+    Methods
+    -------
+    create_engine_bd()
+        Create a connection engine
+        
+    """
 
     def __init__(self,user:str,password:str,host:str,database_name:str):
         self.user = user
